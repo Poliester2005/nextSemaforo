@@ -1,0 +1,53 @@
+.container {
+    display: grid;
+    background-color: grey;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-radius: 10px;
+    .Meio {
+        background-color: lightgrey;
+    }
+    div {
+        display: flex;
+        flex-direction: column;
+        height: 200px;
+        label {
+            width: 100px;
+            justify-content: center;
+            display: flex;
+            background-color: darkgrey;
+            margin-left: auto;
+            margin-right: auto;
+            input {
+                opacity: 0;
+                height: 0;
+                width: 0;
+            }
+            .checkmark {
+                height: 40px;
+                width: 40px;
+                margin: 10px;
+                background-color: #eee;
+                border-radius: 50%;
+                cursor: pointer;
+                border: solid black;
+            }
+            .checkmark:after {
+                top: 9px;
+                left: 9px;
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: white;
+            }
+            .SemVerm:checked ~ .checkmark {
+                background-color: red;
+            }
+            .SemAma:checked ~ .checkmark {
+                background-color: yellow;
+            }
+            .SemVerd:checked ~ .checkmark {
+                background-color: green;
+            }
+        }
+    }
+}

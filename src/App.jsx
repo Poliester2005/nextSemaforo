@@ -1,38 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './App.css'
 import * as mqtt from 'mqtt/dist/mqtt'
+import Estado1 from './Estado1'
+import Estado2 from './Estado2'
+import Estado3 from './Estado3'
 
-var client = mqtt.connect("mqtt://46.17.108.113:1883");
 
-var topics = ["/TEF/lamp114/attrs/S1", "/TEF/lamp114/attrs/S2", "/TEF/lamp114/attrs/S3", "/TEF/lamp114/attrs/S4"]
+var options = [{
+  host: 'localhost',
+  port: '1883'
+}]
+
+var client = mqtt.connect("mqtt://46.17.108.113", options);
+
+var topics = "/TEF/lamp114/attrs/S1"
 
 client.subscribe(topics);
 console.log("Client subscribed ");
 
+var estado = 1
+
 function App() {
-  const [count, setCount] = useState(0)
-
-  var note;
-  client.on("message", function (topic, message) {
-    note = message.toString();
-    // Updates React state with message
-    setMsg(note);
-    console.log(note);
-    client.end();
-  });
-
-  
 
   return (
     <>
-      <div className="App">
-        <header className="App-header">
-          <h1>Hello MQTT in React</h1>
-          <p>The message payload is: {msg}</p>
-        </header>
-      </div>
+      <Estado3></Estado3>
     </>
   )
 }
